@@ -1,4 +1,5 @@
 // Formulario 
+const form = document.getElementById('form')
 const sectorSelect = document.getElementById("sector");
 const deviceSelect = document.getElementById("device");
 const visitsInput = document.getElementById("visitors");
@@ -53,6 +54,12 @@ function cargaSector(){
     });
 }
 
+// Funcion submit del formulario
+form.addEventListener('submit', e => {
+    e.preventDefault()
+    calculateConversions()
+})
+
 // Calculo del boton submit
 function calculateConversions(){
     const sectorIndex = sectorSelect.value;
@@ -73,16 +80,16 @@ function calculateConversions(){
     rellenarVista(selectedSector, device, visits, sales, conversionRate, expectedSales)
     ocultarFormulario()
 
-    let message;
-    if (sales > expectedSales + 0.1) {
-        message = "¡Excelente trabajo! Estás por encima del promedio del sector.";
-    } else if (sales >= expectedSales - 0.1 && sales <= expectedSales + 0.1) {
-        message = "Estás en el promedio del sector.";
-    } else {
-        message = "Estás por debajo del promedio del sector.";
-    }
+    // let message;
+    // if (sales > expectedSales + 0.1) {
+    //     message = "¡Excelente trabajo! Estás por encima del promedio del sector.";
+    // } else if (sales >= expectedSales - 0.1 && sales <= expectedSales + 0.1) {
+    //     message = "Estás en el promedio del sector.";
+    // } else {
+    //     message = "Estás por debajo del promedio del sector.";
+    // }
 
-    resultDiv.textContent = `Ventas esperadas: ${expectedSales} // ${message}`;
+    // resultDiv.textContent = `Ventas esperadas: ${expectedSales} // ${message}`;
 }
 
 // Actualizar valor de tasa de conversion /
@@ -121,7 +128,5 @@ const mostrarFormulario = () => {
 }
 
 window.addEventListener('load', function() {
-    // Coloca aquí el código que deseas ejecutar una vez que la página haya cargado completamente
     cargaSector();
-    // Puedes agregar más instrucciones aquí
   });

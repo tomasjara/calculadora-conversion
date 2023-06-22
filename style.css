@@ -7,6 +7,7 @@ body {
     flex-direction: column;
     /* background-color: red; */
     /* padding: 2em 0; */
+    /* background-image: url("imgs/fondopuntos.png"); */
 }
 
 .calculator {
@@ -14,6 +15,7 @@ body {
     padding: 20px;
     width: 350px;
     border-radius: 4px;
+    background-color: #fff;
 }
 
 label,

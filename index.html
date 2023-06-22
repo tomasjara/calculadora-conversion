@@ -13,10 +13,10 @@
 
 <body class="vh-100 d-flex">
     <header class="fixed-top px-3 d-none" id="header">
-        <button class="btn btn-danger" onclick="mostrarFormulario()">atras</button>
+        <button class="btn btn-danger" onclick="mostrarFormulario()">Atras</button>
     </header>
     <div class="container d-flex justify-content-center" id="contenedorFormulario">
-        <div class="calculator">
+        <form class="calculator shadow" id="form">
             <label for="sector">Selecciona el sector:</label>
             <select id="sector" onchange="updateConversionRate()">
                 <option value="">Selecciona un sector</option>
@@ -35,13 +35,14 @@
             <input type="number" id="sales" placeholder="Ventas promedio">
             <label>Tasa de conversión del sector y dispositivo seleccionados (%):</label>
             <input type="text" id="conversionRate" readonly>
-            <button onclick="calculateConversions()">Calcular conversiones</button>
-            <p id="result"></p>
-        </div>
+            <button class="btn btn-primary">Calcular conversiones</button>
+            <!-- <p id="result"></p> -->
+        </form>
     </div>
 
-    <div class="container-fluid d-none" id="contenedorResultado">
-        <div class="row border pt-4">
+    <!-- d-none -->
+    <div class="container d-none" id="contenedorResultado">
+        <div class="row border pt-4 shadow " style="background-color: #fff;">
             <div class="col-md-4">
                 <div class="d-flex flex-column justify-content-center align-items-center mb-4">
                     <p class="rounded border p-4" id="comparacion-actual-dispositivo">(dispositivo)</p>
@@ -51,6 +52,7 @@
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center mb-4">
                     <div class="rounded border p-4" id="comparacion-actual-ventas">Ventas: (numero)</div>
+                    <div class="box float-right rounded border">PRUEBA</div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -66,6 +68,7 @@
                     <div class="rounded border p-4" id="comparacion-esperadas-visitas">Visitantes: (numero)</div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center mb-4">
+                    <div class="box float-left rounded border">PRUEBA</div>
                     <div class="rounded border p-4" id="comparacion-esperadas-ventas">Ventas: (numero)</div>
                 </div>
             </div>
