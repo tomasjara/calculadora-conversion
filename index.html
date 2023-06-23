@@ -11,71 +11,86 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="vh-100 d-flex">
+<body class="vh-100 d-flex justify-content-center align-items-center">
     <header class="fixed-top px-3 d-none" id="header">
-        <button class="btn btn-danger" onclick="mostrarFormulario()">Atras</button>
+        <button class="btn btn-danger" style="background-color:#FF4B00;" onclick="mostrarFormulario()">Atras</button>
     </header>
-    <div class="container d-flex justify-content-center" id="contenedorFormulario">
-        <form class="calculator shadow" id="form">
-            <label for="sector">Selecciona el sector:</label>
-            <select id="sector" onchange="updateConversionRate()">
-                <option value="">Selecciona un sector</option>
-            </select>
-            <label for="device">Selecciona el dispositivo:</label>
-            <select id="device" onchange="updateConversionRate()">
-                <option value="">Selecciona un dispositivo</option>
-                <option value="global">Promedio General</option>
-                <option value="desktop">Desktop</option>
-                <option value="mobile">Mobile</option>
-                <option value="tablet">Tablet</option>
-            </select>
-            <label for="visitors">Visitantes:</label>
-            <input type="number" id="visitors" placeholder="Cantidad de visitantes">
-            <label for="sales">Ventas promedio:</label>
-            <input type="number" id="sales" placeholder="Ventas promedio">
-            <label>Tasa de conversión del sector y dispositivo seleccionados (%):</label>
-            <input type="text" id="conversionRate" readonly>
-            <button class="btn btn-primary">Calcular conversiones</button>
-            <!-- <p id="result"></p> -->
-        </form>
-    </div>
 
-    <!-- d-none -->
-    <div class="container d-none" id="contenedorResultado">
-        <div class="row border pt-4 shadow " style="background-color: #fff;">
-            <div class="col-md-4">
-                <div class="d-flex flex-column justify-content-center align-items-center mb-4">
-                    <p class="rounded border p-4" id="comparacion-actual-dispositivo">(dispositivo)</p>
-                </div>
-                <div class="d-flex flex-column justify-content-center align-items-center mb-4">
-                    <div class="rounded border p-4" id="comparacion-actual-visitantes">Visitantes: (numero)</div>
-                </div>
-                <div class="d-flex flex-column justify-content-center align-items-center mb-4">
-                    <div class="rounded border p-4" id="comparacion-actual-ventas">Ventas: (numero)</div>
-                    <div class="box float-right rounded border">PRUEBA</div>
+    <form class="container calculator shadow" id="form">
+        <label for="sector">Selecciona el sector:</label>
+        <select id="sector" onchange="updateConversionRate()">
+            <option value="">Selecciona un sector</option>
+        </select>
+        <label for="device">Selecciona el dispositivo:</label>
+        <select id="device" onchange="updateConversionRate()">
+            <option value="">Selecciona un dispositivo</option>
+            <option value="global">Promedio General</option>
+            <option value="desktop">Desktop</option>
+            <option value="mobile">Mobile</option>
+            <option value="tablet">Tablet</option>
+        </select>
+        <label for="visitors">Visitantes:</label>
+        <input type="number" id="visitors" placeholder="Cantidad de visitantes">
+        <label for="sales">Ventas promedio:</label>
+        <input type="number" id="sales" placeholder="Ventas promedio">
+        <label>Tasa de conversión del sector y dispositivo seleccionados (%):</label>
+        <input type="text" id="conversionRate" readonly>
+        <button class="btn btn-primary">Calcular conversiones</button>
+    </form>
+
+    <div class="container row border rounded-4 py-4 shadow d-none "
+        style="background-color: #343233; color: #fff; opacity: 0.9;" id="contenedorResultado">
+        <div class="col-md-4 d-flex flex-column gap-4">
+            <h2 class="text-center" id="">Datos actuales</h2>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="rounded border p-4 fs-5" id="comparacion-actual-dispositivo">(dispositivo)</div>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="rounded border p-4 fs-5" id="comparacion-actual-visitantes">Visitantes: (numero)</div>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="rounded border p-4 position-relative fs-5" id="comparacion-actual-ventas">
+                    Ventas: (numero)
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="h-100 d-flex justify-content-center align-items-center fs-2 mb-4" id="tasa-conversion">
+        </div>
+        <div class="col-md-4 d-flex flex-column">
+
+            <h2 class="text-center" id="">Media del sector</h2>
+
+            <div class="flex-grow-1 d-flex justify-content-center align-items-center flex-column fs-2">
+                <div class="border rounded bg-dark p-2" id="tasa-conversion" style="color: #fff;">
                     0.00%
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="d-flex flex-column justify-content-center align-items-center mb-4">
-                    <div class="rounded border p-4" id="comparacion-esperadas-dispositivo">(dispositivo)</div>
-                </div>
-                <div class="d-flex flex-column justify-content-center align-items-center mb-4">
-                    <div class="rounded border p-4" id="comparacion-esperadas-visitas">Visitantes: (numero)</div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center mb-4">
-                    <div class="box float-left rounded border">PRUEBA</div>
-                    <div class="rounded border p-4" id="comparacion-esperadas-ventas">Ventas: (numero)</div>
+
+            <div class="flex-grow-0 fs-6">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci exercitationem ipsa nisi laborum harum
+                iusto nemo modi quos quae minus.
+            </div>
+
+        </div>
+        <div class="col-md-4 d-flex flex-column gap-4">
+            <h2 class="text-center" id="">Datos esperados</h2>
+            <div class="d-flex flex-column justify-content-center align-items-center ">
+                <div class="rounded border p-4 fs-5" id="comparacion-esperadas-dispositivo">(dispositivo)</div>
+            </div>
+
+            <div class="d-flex flex-column justify-content-center align-items-center ">
+                <div class="rounded border p-4 fs-5" id="comparacion-esperadas-visitas">Visitantes: (numero)</div>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center ">
+                <div class="rounded border p-4 position-relative fs-5" id="comparacion-esperadas-ventas">
+                    Ventas: (numero)
+                    <div class="position-absolute top-50 iconoDerecha translate-middle p-2 rounded bg-success fs-5"
+                        style='color: #fff;'>50</div>
                 </div>
             </div>
         </div>
     </div>
 
-
+    <script src="https://kit.fontawesome.com/3cf7841322.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>

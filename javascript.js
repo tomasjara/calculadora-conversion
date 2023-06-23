@@ -18,7 +18,7 @@ const visitasEsperadas = document.getElementById('comparacion-esperadas-visitas'
 const ventasEsperadas = document.getElementById('comparacion-esperadas-ventas')
 
 // Contenedores
-const contenedorFormulario = document.getElementById('contenedorFormulario')
+// const contenedorFormulario = document.getElementById('contenedorFormulario')
 const contenedorResultado = document.getElementById('contenedorResultado')
 const header = document.getElementById('header')
 
@@ -56,6 +56,7 @@ function cargaSector(){
 
 // Funcion submit del formulario
 form.addEventListener('submit', e => {
+    console.log('first')
     e.preventDefault()
     calculateConversions()
 })
@@ -101,28 +102,43 @@ function updateConversionRate(){
 }
 
 function rellenarVista(selectedSector, device, visits, sales, conversionRate, expectedSales) {
-    console.log('Sector:', selectedSector.sector)
-    console.log('Dispositivo:', device)
-    console.log('Visitas:', visits)
-    console.log('Ventas:', sales)
+    // console.log('Sector:', selectedSector.sector)
+    // console.log('Dispositivo:', device)
+    // console.log('Visitas:', visits)
+    // console.log('Ventas:', sales)
+
+    const checkIzquierda = `<div class="position-absolute top-50 start-100 translate-middle p-2 rounded bg-success"><i class="fa-solid fa-check" style="color: #ffffff;"></i></div>`
+
+    const equisIzquierda = `<div class="position-absolute top-50 start-100 translate-middle p-2 rounded bg-danger"><i class="fa-solid fa-x" style="color: #ffffff;"></i></div>`
+
+    // ejemplos
+    const comparacionVentasPositivo = (diferencia) => `<div class="position-absolute top-50 iconoDerecha translate-middle p-2 rounded bg-success" style='color: #fff;'>${diferencia}</div>`
+
+    const comparacionVentasNegativo = (diferencia) => `<div class="position-absolute top-50 iconoDerecha translate-middle p-2 rounded bg-danger" style='color: #fff;'>${diferencia}</div>`
 
     actualDispositivo.innerText = `Dispositivo: ${device}`
     actualVisitas.innerText = `Visitantes: ${visits}`
     actualVentas.innerText = `Ventas: ${sales}`
+    actualVentas.innerHTML = `Ventas: ${sales} ${sales > expectedSales ? checkIzquierda : equisIzquierda}`
+
     tasaConversion.innerText = `${conversionRate}%`
+    
     dispositivoEsperado.innerText = `Sector: ${selectedSector.sector}`
     visitasEsperadas.innerText = 'Visitantes esperados: ???'
-    ventasEsperadas.innerText = `${sales - expectedSales} / Ventas esperadas: ${expectedSales}`
+    ventasEsperadas.innerHTML = `${sales - expectedSales > 0 ? comparacionVentasPositivo(sales - expectedSales) : comparacionVentasNegativo(sales - expectedSales)} Ventas esperadas: ${expectedSales}`
+
+    // ventasEsperadas.innerText = `${sales - expectedSales > 0 ? comparacionVentasPositivo(sales - expectedSales) : comparacionVentasNegativo(sales - expectedSales)} / Ventas esperadas: ${expectedSales}`
+
 }
 
 const ocultarFormulario = ()  => {
-    contenedorFormulario.classList.add('d-none')
+    form.classList.add('d-none')
     contenedorResultado.classList.remove('d-none')
     header.classList.remove('d-none')
 }
 
 const mostrarFormulario = () => {
-    contenedorFormulario.classList.remove('d-none')
+    form.classList.remove('d-none')
     contenedorResultado.classList.add('d-none')
     header.classList.add('d-none')
 }

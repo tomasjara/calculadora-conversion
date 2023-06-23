@@ -1,13 +1,17 @@
 body {
     font-family: Arial, sans-serif;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    /* height: 100vh; */
-    flex-direction: column;
-    /* background-color: red; */
-    /* padding: 2em 0; */
-    /* background-image: url("imgs/fondopuntos.png"); */
+    background-image: url('imgs/fondopuntos.png');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.fondo{
+    z-index: -99;
+    position: absolute;
+    opacity: 0.5;
+    background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
+    background-position: center
 }
 
 .calculator {
@@ -43,4 +47,9 @@ button {
     margin: 10px 2px;
     cursor: pointer;
     border: none;
+}
+
+.iconoDerecha {
+    right: 87% !important;
+    color: #fff
 }
